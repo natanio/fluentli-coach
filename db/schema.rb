@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630002440) do
+ActiveRecord::Schema.define(version: 20150630060019) do
+
+  create_table "coaches", force: true do |t|
+    t.boolean "will_chat",    default: false
+    t.boolean "will_call",    default: false
+    t.boolean "is_available", default: true
+    t.text    "services"
+    t.integer "user_id"
+    t.string  "video_url"
+    t.integer "call_rate"
+  end
+
+  create_table "learners", force: true do |t|
+    t.text    "bio"
+    t.text    "reason_why"
+    t.integer "user_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -26,8 +42,10 @@ ActiveRecord::Schema.define(version: 20150630002440) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
     t.integer  "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
