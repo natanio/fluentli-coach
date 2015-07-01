@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :learners
   has_many :language_relationships
 
+  accepts_nested_attributes_for :language_relationships
+
   def set_default_role
     self.role ||= :user
   end

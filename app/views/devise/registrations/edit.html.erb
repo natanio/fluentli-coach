@@ -3,8 +3,16 @@
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, :autofocus => true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :location %>
+      <%= f.text_field :location, class: 'form-control', placeholder: 'Tokyo, Japan' %>
     </div>
     <div class="form-group">
       <%= f.label :email %>
@@ -34,6 +42,27 @@
     <%= f.submit 'Update', :class => 'button right' %>
   <% end %>
 </div>
+
+<div class="authform">
+<h3>Language Settings</h3>
+  <p>Fluent languages:</p>
+  <%#= form_tag(controller: "language_relationships", action: "create", method: "post", class: "language-settings") do %>
+    <%= text_field_tag(:relationship) %>
+  <%# end %>
+  <% fluent_languages = @user.language_relationships.where(relationship: 'fluent') %>
+  <% fluent_languages.each do |language| %>
+    <p><%= language %></p>
+  <% end %>
+</div>
+
+
+<% if Coach.find_by_user_id(@user) %>
+  <div class="authform">
+  <h3>Coaching Settings</h3>
+  <p></p>
+  </div>
+<% end %>
+
 <div class="authform">
 <h3>Cancel Account</h3>
 <p>Unhappy? We'll be sad to see you go.</p>
