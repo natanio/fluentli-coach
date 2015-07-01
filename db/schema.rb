@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630060019) do
+ActiveRecord::Schema.define(version: 20150701053030) do
 
   create_table "coaches", force: true do |t|
     t.boolean "will_chat",    default: false
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 20150630060019) do
     t.integer "user_id"
     t.string  "video_url"
     t.integer "call_rate"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string   "iso_639_1_code"
+    t.string   "iso_639_2b_code"
+    t.string   "iso_639_3_code"
+    t.string   "native"
+    t.string   "english"
+    t.string   "french"
+    t.string   "spanish"
+    t.string   "chinese"
+    t.string   "russian"
+    t.string   "german"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "learners", force: true do |t|

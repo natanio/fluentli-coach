@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :coaches
   has_many :learners
+  has_many :language_relationships
 
   def set_default_role
     self.role ||= :user
