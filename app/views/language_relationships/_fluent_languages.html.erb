@@ -1,0 +1,4 @@
+<% fluent_languages = current_user.language_relationships.where(relationship: 'fluent') %>
+<% fluent_languages.each do |relationship| %>
+  <p><%= relationship.language.english %></p>
+<% end %>

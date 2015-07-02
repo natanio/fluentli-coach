@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'seed-fu', '~> 2.3'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'binding_of_caller'
   gem 'hub', :require=>nil
   gem 'rails_apps_pages'
   gem 'rails_apps_testing'

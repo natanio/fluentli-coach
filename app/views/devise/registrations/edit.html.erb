@@ -4,7 +4,7 @@
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :first_name %>
-      <%= f.text_field :first_name, :autofocus => true, class: 'form-control' %>
+      <%= f.text_field :first_name, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= f.label :last_name %>
@@ -44,15 +44,38 @@
 </div>
 
 <div class="authform">
-<h3>Language Settings</h3>
-  <p>Fluent languages:</p>
-  <%#= form_tag(controller: "language_relationships", action: "create", method: "post", class: "language-settings") do %>
-    <%= text_field_tag(:relationship) %>
-  <%# end %>
-  <% fluent_languages = @user.language_relationships.where(relationship: 'fluent') %>
-  <% fluent_languages.each do |language| %>
-    <p><%= language %></p>
+<h3>Fluent Languages</h3>
+<% @language_relationship = LanguageRelationship.new %>
+
+  <%= simple_form_for(@language_relationship, as: :fluent, remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.input :language, class: 'form-control', placeholder: 'Enter a language you speak fluently' %>
+    </div>
+    <%= f.submit 'Add', class: 'btn btn-default right' %>
   <% end %>
+
+  <div id="fluentLanguages">
+    <%= render 'language_relationships/fluent_languages' %>
+  </div>
+
+</div>
+
+<div class="authform">
+<h3>Languages You're Learning</h3>
+<% @language_relationship = LanguageRelationship.new %>
+  <p>Fluent languages:</p>
+
+  <%= simple_form_for(@language_relationship, as: :fluent, remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.input :language, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Add', class: 'btn btn-default right' %>
+  <% end %>
+
+  <div id="fluentLanguages">
+    <%= render 'language_relationships/fluent_languages' %>
+  </div>
+
 </div>
 
 
