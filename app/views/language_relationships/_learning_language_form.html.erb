@@ -1,0 +1,16 @@
+<div class="authform">
+<h3>Languages You're Learning</h3>
+<% @language_relationship = LanguageRelationship.new %>
+
+  <%= simple_form_for(@language_relationship, as: :learning, remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.input :language, class: 'form-control', placeholder: 'Enter a language you are learning' %>
+    </div>
+    <%= f.submit 'Add', class: 'btn btn-default right' %>
+  <% end %>
+
+  <div id="learningLanguages">
+    <%= render 'language_relationships/learning_languages' %>
+  </div>
+
+</div>

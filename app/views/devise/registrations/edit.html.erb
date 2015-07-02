@@ -43,44 +43,21 @@
   <% end %>
 </div>
 
-<div class="authform">
-<h3>Fluent Languages</h3>
-<% @language_relationship = LanguageRelationship.new %>
+<%= render 'language_relationships/fluent_language_form' %>
 
-  <%= simple_form_for(@language_relationship, as: :fluent, remote: true) do |f| %>
-    <div class="form-group">
-      <%= f.input :language, class: 'form-control', placeholder: 'Enter a language you speak fluently' %>
-    </div>
-    <%= f.submit 'Add', class: 'btn btn-default right' %>
-  <% end %>
-
-  <div id="fluentLanguages">
-    <%= render 'language_relationships/fluent_languages' %>
-  </div>
-
-</div>
-
-<div class="authform">
-<h3>Languages You're Learning</h3>
-<% @language_relationship = LanguageRelationship.new %>
-  <p>Fluent languages:</p>
-
-  <%= simple_form_for(@language_relationship, as: :fluent, remote: true) do |f| %>
-    <div class="form-group">
-      <%= f.input :language, class: 'form-control' %>
-    </div>
-    <%= f.submit 'Add', class: 'btn btn-default right' %>
-  <% end %>
-</div>
-
-<div id="fluentLanguages">
-  <%= render 'language_relationships/fluent_languages' %>
-</div>
+<%= unless current_user.coach? then render 'language_relationships/learning_language_form' end %>
 
 
-<% if Coach.find_by_user_id(@user) %>
+<% if current_user.coach? %>
   <div class="authform">
   <h3>Coaching Settings</h3>
+  <p></p>
+  </div>
+<% end %>
+
+<% if current_user.user? %>
+<div class="authform">
+  <h3>Learner Settings</h3>
   <p></p>
   </div>
 <% end %>

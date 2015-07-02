@@ -1,0 +1,16 @@
+<div class="authform">
+<h3>Fluent Languages</h3>
+<% @language_relationship = LanguageRelationship.new %>
+
+  <%= simple_form_for(@language_relationship, as: :fluent, remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.input :language, class: 'form-control', placeholder: 'Enter a language you speak fluently' %>
+    </div>
+    <%= f.submit 'Add', class: 'btn btn-default right' %>
+  <% end %>
+
+  <div id="fluentLanguages">
+    <%= render 'language_relationships/fluent_languages' %>
+  </div>
+
+</div>
