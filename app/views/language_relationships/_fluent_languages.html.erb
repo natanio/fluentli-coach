@@ -1,4 +1,9 @@
 <% fluent_languages = current_user.language_relationships.where(relationship: 'fluent') %>
 <% fluent_languages.each do |relationship| %>
-  <p><%= relationship.language.english %></p>
+  <div class="language-relationship">
+    <p class="language-name"><%= relationship.language.english %></p>
+    <div class="delete-language">
+      <%= link_to 'X', language_relationship_path(relationship.id), method: :delete, remote: true %>
+    </div>
+  </div>
 <% end %>

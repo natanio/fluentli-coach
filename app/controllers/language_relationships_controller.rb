@@ -1,14 +1,6 @@
 class LanguageRelationshipsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-
-  end
-
-  def new
-
-  end
-
   def create
 
     if params[:fluent].present?
@@ -24,12 +16,9 @@ class LanguageRelationshipsController < ApplicationController
     end
   end
 
-  def update
-
-  end
-
   def destroy
-
+    LanguageRelationship.find(params[:id]).destroy
+    render :destroy
   end
 
 end
