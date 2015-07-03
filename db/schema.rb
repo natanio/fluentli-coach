@@ -11,16 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701054520) do
+ActiveRecord::Schema.define(version: 20150703234342) do
 
   create_table "coaches", force: true do |t|
-    t.boolean "will_chat",    default: false
-    t.boolean "will_call",    default: false
-    t.boolean "is_available", default: true
+    t.boolean "will_chat",           default: false
+    t.boolean "will_call",           default: false
+    t.boolean "is_available",        default: true
     t.text    "services"
     t.integer "user_id"
     t.string  "video_url"
     t.integer "call_rate"
+    t.string  "bank_account_name"
+    t.integer "bank_account_number"
+    t.integer "bank_routing"
+    t.string  "paypal_email"
   end
 
   create_table "language_relationships", force: true do |t|
@@ -50,6 +54,15 @@ ActiveRecord::Schema.define(version: 20150701054520) do
     t.text    "bio"
     t.text    "reason_why"
     t.integer "user_id"
+    t.string  "card_name"
+    t.integer "card_number"
+    t.integer "card_verification"
+    t.date    "card_expiration"
+    t.string  "billing_country"
+    t.string  "billing_street"
+    t.string  "billing_city"
+    t.string  "billing_state"
+    t.integer "billing_zip"
   end
 
   create_table "users", force: true do |t|
