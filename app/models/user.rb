@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   after_create :create_learner
 
-  has_many :coaches
-  has_many :learners
+  has_one :coach
+  has_one :learner
   has_many :language_relationships
 
-  #accepts_nested_attributes_for :language_relationships
+  #accepts_nested_attributes_for :coach
 
   def set_default_role
     self.role ||= :user

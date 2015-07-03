@@ -1,0 +1,13 @@
+<% @coach = @user.coach %>
+
+<%= simple_form_for @coach, url: coach_path(@coach), action: :update do |f| %>
+  <div class="autform">
+    <%= f.input :is_available, label: 'Are you available to coach?', class: 'form-control' %>
+    <%= f.input :services, class: 'form-control', id: 'big-textarea', placeholder: 'Define what you will give learners. Why should they train with you? Be specific.' %>
+    <%= f.input :video_url, hint: 'Introduce yourself in a video.', class: 'form-control', placeholder: 'www.youtube.com/123456' %>
+    <%= f.input :will_chat, label: 'I offer in-app chatting', class: 'form-control' %>
+    <%= f.input :will_call, label: 'I accept phone call requests', class: 'form-control' %>
+    <%= f.input :call_rate, placeholder: '$30', hint: 'All prices in U.S. Dollars please.', class: 'form-control' %>
+    <%= f.submit %>
+  </div>
+<% end %>

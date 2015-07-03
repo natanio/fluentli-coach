@@ -1,4 +1,6 @@
 // import the CSS framework
+$icon-font-path: 'bootstrap/';
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -120,4 +122,9 @@ p.language-name {
   &:hover {
     background-color: #5FB0E6;
   }
+}
+
+// Form Styles
+textarea#coach_services {
+  min-height: 180px;
 }
