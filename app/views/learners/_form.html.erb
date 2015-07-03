@@ -1,0 +1,9 @@
+<% @learner = @user.learner %>
+
+<%= simple_form_for @learner, url: learner_path(@learner), action: :update do |f| %>
+  <div class="autform">
+    <%= f.input :bio, class: 'big-textarea', placeholder: 'Tell us about you. This will help potential coaches.' %>
+    <%= f.input :reason_why, class: 'form-control big-textarea', label: 'Why are you looking for a coach?', placeholder: 'Explain what your goals are, and why you are needing a coach most.' %>
+    <%= f.submit 'Update' %>
+  </div>
+<% end %>
