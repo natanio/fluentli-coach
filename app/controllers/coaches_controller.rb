@@ -27,6 +27,6 @@ class CoachesController < UsersController
 private
 
   def secure_params
-    params.require(:coach).permit(:will_chat, :will_call, :is_available, :services, :user_id, :video_url, :call_rate)
+    params.require(:coach).permit(:will_chat, :will_call, :is_available, :services, :user_id, :video_url, :call_rate, :paypal_email)
   end
 end

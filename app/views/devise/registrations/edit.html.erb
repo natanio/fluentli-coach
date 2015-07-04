@@ -1,40 +1,51 @@
-<div>
+<div class="row">
 
-  <!-- Nav pills -->
-  <ul class="nav nav-pills" role="tablist">
-    <li role="presentation" class="active"><a href="#general" aria-controls="home" role="pill" data-toggle="pill">General</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="pill" data-toggle="pill">Profile</a></li>
-    <li role="presentation"><a href="#language" aria-controls="messages" role="pill" data-toggle="pill">Language</a></li>
-    <li role="presentation"><a href="#payments" aria-controls="settings" role="pill" data-toggle="pill">Payments</a></li>
-  </ul>
+  <h2 class="text-center">Update Your Settings</h2>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="pillpanel" class="tab-pane active" id="general">
-      <%= render 'edit_form' %>
+  <div class="col-sm-2 col-sm-offset-3" style="margin-top:50px;">
+    <!-- Nav pills -->
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+      <li role="presentation" class="active"><a href="#general" aria-controls="home" role="pill" data-toggle="pill">General</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="pill" data-toggle="pill">Profile</a></li>
+      <li role="presentation"><a href="#language" aria-controls="messages" role="pill" data-toggle="pill">Language</a></li>
+      <li role="presentation"><a href="#payments" aria-controls="settings" role="pill" data-toggle="pill">Payments</a></li>
+    </ul>
+  </div>
 
-      <div class="authform">
-      <h3>Cancel Account</h3>
-      <p>Unhappy? We'll be sad to see you go.</p>
-      <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+  <div class="col-sm-5">
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="pillpanel" class="tab-pane active" id="general">
+        <%= render 'edit_form' %>
+
+        <div class="authform">
+        <h3>Cancel Account</h3>
+        <p>Unhappy? We'll be sad to see you go.</p>
+        <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-block' %>
+        </div>
+
       </div>
+      <div role="pillpanel" class="tab-pane" id="profile">
+        <% if current_user.coach? %>
+          <%= render 'coaches/edit' %>
+        <% end %>
 
-    </div>
-    <div role="pillpanel" class="tab-pane" id="profile">
-      <% if current_user.coach? %>
-        <%= render 'coaches/edit' %>
-      <% end %>
+        <% if current_user.user? %>
+          <%= render 'learners/edit' %>
+        <% end %>
+      </div>
+      <div role="pillpanel" class="tab-pane" id="language">
+        <%= render 'language_relationships/fluent_language_form' %>
 
-      <% if current_user.user? %>
-        <%= render 'learners/edit' %>
-      <% end %>
+        <%= unless current_user.coach? then render 'language_relationships/learning_language_form' end %>
+      </div>
+      <div role="pillpanel" class="tab-pane" id="payments">
+        <% if current_user.coach? %>
+          <%= render 'coaches/banking_form' %>
+        <% end %>
+      </div>
     </div>
-    <div role="pillpanel" class="tab-pane" id="language">
-      <%= render 'language_relationships/fluent_language_form' %>
-
-      <%= unless current_user.coach? then render 'language_relationships/learning_language_form' end %>
-    </div>
-    <div role="pillpanel" class="tab-pane" id="payments">...</div>
   </div>
 
 </div>
