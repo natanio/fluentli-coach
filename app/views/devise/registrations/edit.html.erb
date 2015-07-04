@@ -44,6 +44,10 @@
         <% if current_user.coach? %>
           <%= render 'coaches/banking_form' %>
         <% end %>
+
+        <% if current_user.user? %>
+          <%= render 'learners/payment_form' %>
+        <% end %>
       </div>
     </div>
   </div>

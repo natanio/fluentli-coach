@@ -1,0 +1,26 @@
+<div class="authform">
+  <h3>Payment Settings</h3>
+  <% @learner = @user.learner %>
+
+  <%= simple_form_for @learner, url: learner_path(@learner), action: :update do |f| %>
+    <div class="autform">
+      <h3>Credit Card</h3>
+      <p>In order to hire a coach, you need to add the payment details below. Thanks!</p>
+      <%= f.input :card_name, label: 'Name as it is on your credit card', placeholder: 'John Smith', class: 'form-control' %>
+      <%= f.input :card_number, class: 'form-control', placeholder: '1234 5678 0090 4567', as: :string %>
+      <%= f.input :card_verification, label: 'Card security number', hint: 'This is usually on the back of most cards.', class: 'form-control', placeholder: '332', as: :string %>
+      <%= f.input :card_expiration, placeholder: 'valid-paypal-email@gmail.com', class: 'form-control', order: [:month, :year] %>
+      <%= f.submit 'Update', class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+
+    <div class="autform">
+      <h3>Billing Address</h3>
+      <%= f.input :billing_country, placeholder: 'United States', class: 'form-control' %>
+      <%= f.input :billing_street, class: 'form-control', placeholder: '12345 Main St.' %>
+      <%= f.input :billing_city, placeholder: 'Austin', class: 'form-control'%>
+      <%= f.input :billing_state, placeholder: 'TX' ,class: 'form-control' %>
+      <%= f.input :billing_zip, placeholder: '77738', as: :string %>
+      <%= f.submit 'Update', class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  <% end %>
+</div>

@@ -27,6 +27,6 @@ class LearnersController < UsersController
 private
 
   def secure_params
-    params.require(:learner).permit(:bio, :reason_why)
+    params.require(:learner).permit(:bio, :reason_why, :card_name, :card_number, :card_verification, :card_expiration, :billing_country, :billing_street, :billing_city, :billing_state, :billing_zip)
   end
 end

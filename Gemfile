@@ -14,6 +14,7 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'high_voltage'
 gem 'pundit'
 gem 'simple_form'
+gem 'country_select'
 gem 'seed-fu', '~> 2.3'
 gem "font-awesome-rails"
 group :development do

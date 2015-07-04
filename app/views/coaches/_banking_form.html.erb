@@ -6,8 +6,8 @@
     <div class="autform">
       <p>At the current time, we only offer PayPal payments.</p>
       <%#= f.input :bank_account_name, label: 'Name on your bank account', placeholder: 'John Smith', class: 'form-control' %>
-      <%#= f.input :bank_account_number, class: 'form-control', placeholder: '1234567890' %>
-      <%#= f.input :bank_routing, label: 'The routing number for your bank.', class: 'form-control', placeholder: 'www.youtube.com/123456' %>
+      <%#= f.input :bank_account_number, class: 'form-control', placeholder: '1234567890', as: :string %>
+      <%#= f.input :bank_routing, label: 'The routing number for your bank.', class: 'form-control', placeholder: 'www.youtube.com/123456', as: :string %>
       <%= f.input :paypal_email, hint: 'This needs to be a valid PayPal email to receive payments.', placeholder: 'valid-paypal-email@gmail.com' ,class: 'form-control' %>
       <%= f.submit 'Update', class: 'btn btn-primary btn-lg btn-block' %>
     </div>
