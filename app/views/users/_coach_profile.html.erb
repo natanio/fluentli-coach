@@ -1,0 +1,65 @@
+<div class="profile-image">
+</div><!-- end profil-image -->
+
+<h2 class="user-name text-center"><%= @user.first_name %> <%= @user.last_name %></h2>
+<p class="lead text-center"><%= @user.location %></p>
+
+<div class="speaks text-center">
+
+  <ul class="languages">
+    <li>Speaks</li>
+    <% @spoken_languages.each do |lang| %>
+      <li><%= lang.language.english %></li>
+    <% end %>
+  </ul>
+
+</div><!-- end speaks -->
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+    <p><b>Bio</b></p>
+    <p><%= @user.coach.services %></p>
+  </div>
+
+</div>
+
+<% if @user.coach.will_chat? %>
+  <div class="well">
+    <p>Unlimited in-app chat</p>
+  </div>
+<% end %>
+
+<% if @user.coach.will_call? %>
+  <div class="well">
+    <p>I accept phone requests</p>
+  </div>
+<% end %>
+
+<div class="well">
+  <p>Cancel anytime</p>
+</div>
+
+<div class="well">
+  <p>Money back guarantee</p>
+</div>
+
+<div class="hire">
+  <div class="top">
+    <p>$10 / week</p>
+  </div>
+  <div class="bottom">
+    <a href="#" class="btn btn-success btn-lg btn-block">Hire me</a>
+  </div>
+</div>
+
+<div class="hire">
+  <div class="top">
+    <p>$<%= @user.coach.call_rate %> / 30 minute call</p>
+  </div>
+  <div class="bottom">
+    <a href="#" class="btn btn-success btn-lg btn-block">Schedule a call</a>
+  </div>
+</div>
+
+</div>

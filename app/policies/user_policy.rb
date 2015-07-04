@@ -11,7 +11,13 @@ class UserPolicy
   end
 
   def show?
-    @current_user.admin? or @current_user == @user
+    #@user_profile = User.find(params[:id])
+
+    if @user.coach?
+      current_user
+    else
+      @current_user.admin? or @current_user == @user or current_user.coach?
+    end
   end
 
   def update?

@@ -1,3 +1,17 @@
-<h3>User</h3>
-<p>Name: <%= @user.first_name if @user.first_name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<section id="user-profile">
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+
+        <% if @user.user? %>
+          <%= render 'learner_profile' %>
+        <% end %>
+
+        <% if @user.coach? %>
+          <%= render 'coach_profile' %>
+        <% end %>
+
+    </div><!-- end col -->
+
+  </div><!-- end row -->
+</section>

@@ -1,0 +1,41 @@
+<div class="profile-image">
+</div><!-- end profil-image -->
+
+<h2 class="user-name text-center"><%= @user.first_name %> <%= @user.last_name %></h2>
+<p class="lead text-center"><%= @user.location %></p>
+
+<div class="speaks text-center">
+
+  <ul class="languages">
+    <li>Speaks</li>
+    <% @spoken_languages.each do |lang| %>
+      <li><%= lang.language.english %></li>
+    <% end %>
+  </ul>
+
+  <ul class="languages">
+    <li>Learning</li>
+    <% @learning_languages.each do |lang| %>
+      <li><%= lang.language.english %></li>
+    <% end %>
+  </ul>
+
+</div><!-- end speaks -->
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+    <p><b>Bio</b></p>
+    <p><%= @user.learner.bio %></p>
+  </div>
+
+</div>
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+    <p><b>What I need help with</b></p>
+    <p><%= @user.learner.bio %></p>
+  </div>
+
+</div>
