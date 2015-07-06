@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @testimonials = @user.coach.testimonials
     @spoken_languages = LanguageRelationship.where(user_id: @user.id).where(relationship: 'fluent')
     @learning_languages = @user.language_relationships.where(relationship: 'learning')
     authorize @user

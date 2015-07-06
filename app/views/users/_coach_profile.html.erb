@@ -15,12 +15,14 @@
 
 </div><!-- end speaks -->
 
-<%= YouTubeAddy.youtube_embed_url("#{@user.coach.video_url}",600,400).html_safe %>
+<div class="embed-responsive embed-responsive-16by9">
+  <%= YouTubeAddy.youtube_embed_url("#{@user.coach.video_url}").html_safe %>
+</div>
 
 <div class="panel panel-default">
 
   <div class="panel-body">
-    <p><b>Bio</b></p>
+    <p><b>About my services</b></p>
     <p><%= @user.coach.services %></p>
   </div>
 
@@ -62,6 +64,14 @@
   <div class="bottom">
     <a href="#" class="btn btn-success btn-lg btn-block">Schedule a call</a>
   </div>
+</div>
+
+<div class="testimonials">
+
+  <% @testimonials.each do |testimonial| %>
+    <%= render testimonial %>
+  <% end %>
+
 </div>
 
 </div>

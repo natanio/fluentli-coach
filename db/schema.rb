@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703234342) do
+ActiveRecord::Schema.define(version: 20150706015833) do
 
   create_table "coaches", force: true do |t|
     t.boolean "will_chat",           default: false
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20150703234342) do
     t.string  "billing_city"
     t.string  "billing_state"
     t.integer "billing_zip"
+  end
+
+  create_table "testimonials", force: true do |t|
+    t.integer  "learner_id"
+    t.integer  "coach_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
