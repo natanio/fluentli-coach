@@ -15,4 +15,12 @@ class Coach < ActiveRecord::Base
   def average_rating
     ratings.sum(:rating) / ratings.size
   end
+
+  def ratings_count
+    @total = ratings.sum(:rating)
+    if @total >= 1000
+      @total = @total / 100
+    end
+    @total
+  end
 end

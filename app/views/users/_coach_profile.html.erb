@@ -7,6 +7,9 @@
 <div class="speaks text-center">
 
   <div class="ratings">
+    <div class="ratings-count">
+      <%= @user.coach.ratings_count %><br>
+      <%= pluralize_without_count(@user.coach.ratings_count, 'Review') %></div>
     <div id="star"></div>
   </div>
 
