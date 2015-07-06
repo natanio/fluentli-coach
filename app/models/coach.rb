@@ -11,4 +11,8 @@ class Coach < ActiveRecord::Base
 
     @user.learner.destroy
   end
+
+  def average_rating
+    ratings.sum(:rating) / ratings.size
+  end
 end

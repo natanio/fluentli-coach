@@ -1,6 +1,6 @@
 <%= simple_form_for [@user, @testimonial] do |f| %>
   <div class="authform">
-    <%= f.input :rating %>
+    <div id="user_star"></div>
     <%= f.input :content %>
     <%= f.submit 'Submit', class: "btn btn-primary btn-block" %>
   </div>

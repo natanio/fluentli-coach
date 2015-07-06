@@ -6,6 +6,10 @@
 
 <div class="speaks text-center">
 
+  <div class="ratings">
+    <div id="star"></div>
+  </div>
+
   <ul class="languages">
     <li>Speaks</li>
     <% @spoken_languages.each do |lang| %>
@@ -75,3 +79,11 @@
 </div>
 
 </div>
+
+<script>
+$('#star').raty({
+    readOnly: true,
+    score: <%= @user.coach.average_rating %>,
+    path: '/assets'
+  });
+</script>

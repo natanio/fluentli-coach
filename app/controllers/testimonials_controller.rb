@@ -10,6 +10,10 @@ class TestimonialsController < ApplicationController
 
   def new
     set_user
+    @rating = Rating.where(learner_id: current_user.id, coach_id: @user.coach.id).first
+    unless @rating
+      @rating = Rating.create(learner_id: current_user.id , coach_id: @user.coach.id , rating: 0)
+    end
     @testimonial = Testimonial.new
   end
 
@@ -27,7 +31,7 @@ private
   end
 
   def testimonial_params
-    params.require(:testimonial).permit(:learner_id, :coach_id, :content, :rating)
+    params.require(:testimonial).permit(:learner_id, :coach_id, :content)
   end
 
 end
