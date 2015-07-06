@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def create_learner
-    self.learners.create
+    Learner.new(user_id: self.id).save
   end
 
   # Include default devise modules. Others available are:

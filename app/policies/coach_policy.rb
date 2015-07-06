@@ -14,6 +14,10 @@ class CoachPolicy
     @current_user.admin? or @current_user == @user
   end
 
+  def create?
+    @current_user.admin?
+  end
+
   def update?
     @current_user.admin? || @current_user.coach?
   end

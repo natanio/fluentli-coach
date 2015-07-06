@@ -7,6 +7,16 @@
     <%= f.submit 'Change Role', :class => 'button-xs' %>
   <% end %>
 </td>
+
 <td>
-  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
+  <% if !user.coach? %>
+    <%= form_for :coach, :url => { :controller => :coaches, :action => :create } do |f| %>
+      <%= f.hidden_field :user_id, value: user.id %>
+      <%= f.submit 'Create Coach', :class => 'button-xs' %>
+    <% end %>
+  <% end %>
+</td>
+
+<td>
+  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs btn-danger') unless user == current_user %>
 </td>

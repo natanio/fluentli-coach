@@ -8,7 +8,12 @@ class CoachesController < UsersController
   def show
   end
 
-  def new
+  def create
+    authorize Coach
+    @coach = Coach.new(secure_params)
+    @coach.update_attribute(:user_id, params[:coach][:user_id])
+    @coach.save
+    redirect_to :back
   end
 
   def update

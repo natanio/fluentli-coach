@@ -27,7 +27,7 @@ private
   end
 
   def testimonial_params
-    params.require(:testimonial).permit(:learner_id, :coach_id, :content)
+    params.require(:testimonial).permit(:learner_id, :coach_id, :content, :rating)
   end
 
 end
