@@ -81,7 +81,7 @@ Rails.application.configure do
     :s3_host_name => 's3-us-west-2.amazonaws.com',
     :storage => :s3,
     :url => :s3_domain_url,
-    :path => '/:class/:attachment/:id_partition/:style/:filename',
+    :path => /:class/:attachment/:id_partition/:style/:filename,
     :s3_credentials => {
       :bucket => ENV['AWS_BUCKET'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
