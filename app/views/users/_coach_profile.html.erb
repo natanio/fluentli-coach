@@ -1,5 +1,6 @@
 <div class="profile-image">
-</div><!-- end profil-image -->
+  <%= image_tag @user.avatar.url(:medium), class: 'user-avatar img-circle' %>
+</div><!-- end profile-image -->
 
 <h2 class="user-name text-center"><%= @user.first_name %> <%= @user.last_name %></h2>
 <p class="lead text-center"><%= @user.location %></p>

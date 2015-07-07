@@ -18,6 +18,7 @@ gem 'country_select'
 gem 'seed-fu', '~> 2.3'
 gem "font-awesome-rails"
 gem 'youtube_addy'
+gem "paperclip", "~> 4.3"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -37,6 +38,7 @@ group :production do
   gem 'pg'
   gem 'puma'
   gem 'rails_12factor'
+  gem 'aws-sdk', '< 2.0'
 end
 group :test do
   gem 'capybara'
