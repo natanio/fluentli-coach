@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706234043) do
+ActiveRecord::Schema.define(version: 20150708002140) do
+
+  create_table "chat_messages", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "chat_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chats", force: true do |t|
+    t.integer  "learner_id"
+    t.integer  "coach_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "coaches", force: true do |t|
     t.boolean "will_chat",           default: false

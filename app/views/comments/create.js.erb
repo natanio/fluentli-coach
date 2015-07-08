@@ -1,0 +1,12 @@
+publisher = client.publish('/comments'), {
+  message: '<%= j render @comment %>'
+});
+
+publisher.callback(funcation() {
+  $('#comment_body').value('');
+  $('#new_comment').find("input[type='submit']").value('Submit').prop('disabled', false)
+});
+
+publisher.errback(function() {
+  aler('There was an error while posting your comment.');
+});

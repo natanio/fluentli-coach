@@ -3,6 +3,7 @@ class Coach < ActiveRecord::Base
 
   has_many :testimonials
   has_many :ratings
+  has_many :chats
 
   after_create :delete_learner # To delete the learner account the coach doesn't need
 

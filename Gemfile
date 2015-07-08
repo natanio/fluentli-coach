@@ -20,6 +20,7 @@ gem "font-awesome-rails"
 gem 'youtube_addy'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
+gem 'faye-rails', '~> 2.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -28,6 +29,7 @@ group :development do
   gem 'rails_apps_testing'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem 'thin'
 end
 group :development, :test do
   gem 'factory_girl_rails'

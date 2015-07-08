@@ -3,4 +3,5 @@ class Learner < ActiveRecord::Base
 
   has_many :testimonials
   has_many :ratings
+  has_many :chats
 end

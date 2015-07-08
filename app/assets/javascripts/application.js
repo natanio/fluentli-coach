@@ -15,4 +15,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require jquery.raty.js
+//= require faye
+//= require comments
 //= require_tree .
