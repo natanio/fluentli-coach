@@ -1,16 +1,22 @@
-<div id="chat_messages">
-  <%= render @chat_messages %>
-  <div class="messages-list"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div id="chat_messages">
+        <%= render @chat_messages %>
+        <div class="messages-list"></div>
+      </div>
 
+      <div id="new_message" class="fixed text-center">
+        <%= form_for([@chat, ChatMessage.new], :html => { class: 'form-inline' }, remote: true) do |f| %>
+          <div class="form-group">
+            <div class="input-group">
+              <%= f.text_area :content, placeholder: "Send a message" %>
+            </div>
+            <%= f.submit "Send", class: "btn btn-sm btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div><!-- end column -->
+  </div><!-- end row -->
 </div>
 
-<div id="new_message">
-  <%= form_for([@chat, ChatMessage.new], remote: true) do |f| %>
-    <div class="">
-      <%= f.text_area :content, placeholder: "Your comment", rows: 5 %>
-    </div>
-    <div class="large-3 inline">
-      <%= f.submit "Send", class: "btn btn-sm btn-success" %>
-    </div>
-  <% end %>
-</div>

@@ -14,6 +14,6 @@ jQuery ->
     console?.log "Can't unsubscribe."
 
   client.subscribe '/chat_messages', (payload) ->
-    $('#chat_messages').find('.messages-list').prepend(payload.message) if payload.message
+    $('#chat_messages').find('.messages-list').append(payload.message) if payload.message
 
   $('#new_message').submit -> $(this).find("input[type='submit']").val('Sending...').prop('disabled', true)

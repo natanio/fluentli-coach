@@ -1,0 +1,15 @@
+textarea#chat_message_content {
+  max-width: 320px;
+  width: 320px;
+}
+
+#new_message {
+  padding: 1em;
+  background-color: rgb(73, 73, 137);
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  height: auto !important;
+  right: 0;
+  left: 0;
+}

@@ -1,1 +1,6 @@
-<p><%= chat_message.content %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= chat_message.content %>
+  </div>
+  <div class="panel-footer"><%= chat_message.user.first_name %></div>
+</div>
