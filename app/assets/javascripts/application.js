@@ -16,5 +16,5 @@
 //= require bootstrap
 //= require jquery.raty.js
 //= require faye
-//= require comments
+//= require chat_messages
 //= require_tree .

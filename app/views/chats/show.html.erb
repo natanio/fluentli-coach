@@ -1,0 +1,16 @@
+<div id="chat_messages">
+  <%= render @chat_messages %>
+  <div class="messages-list"></div>
+
+</div>
+
+<div id="new_message">
+  <%= form_for([@chat, ChatMessage.new], remote: true) do |f| %>
+    <div class="">
+      <%= f.text_area :content, placeholder: "Your comment", rows: 5 %>
+    </div>
+    <div class="large-3 inline">
+      <%= f.submit "Send", class: "btn btn-sm btn-success" %>
+    </div>
+  <% end %>
+</div>

@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   resources :language_relationships
   resources :coaches
   resources :learners
+  resources :chats do
+    resources :chat_messages
+  end
 end
