@@ -11,7 +11,11 @@ class ChatsController < ApplicationController
   # GET /hangouts/1.json
   def show
     @chat = Chat.find(params[:id])
-    @chat_messages = @chat.chat_messages.order('created_at ASC')
+    if is_allowed?
+      @chat_messages = @chat.chat_messages.order('created_at ASC')
+    else
+      redirect_to root_path, alert: "Sorry, you're not allowed in that chat."
+    end
   end
 
   # GET /hangouts/new
@@ -65,5 +69,12 @@ class ChatsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hangout_params
       params.require(:chat).permit(:learner_id, :coach_id)
+    end
+
+    def is_allowed?
+      @coach = Coach.find(@chat.coach_id)
+      @learner = Learner.find(@chat.learner_id)
+
+      (current_user.id == @coach.user.id) || (current_user.id == @learner.user.id) || current_user.admin?
     end
 end
