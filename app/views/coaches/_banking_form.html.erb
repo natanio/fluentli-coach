@@ -2,6 +2,8 @@
   <h3>Banking Settings</h3>
   <% @coach = @user.coach %>
 
+  <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/fluentlicoach/blue-on-light.png'), user_omniauth_authorize_path(:stripe_connect) %>
+
   <%= simple_form_for @coach, url: coach_path(@coach), action: :update do |f| %>
     <div class="autform">
       <p>At the current time, we only offer PayPal payments.</p>

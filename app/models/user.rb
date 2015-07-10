@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   after_create :create_learner
 
+  devise :omniauthable
+
   has_one :coach
   has_one :learner
   has_many :language_relationships

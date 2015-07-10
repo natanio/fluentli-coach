@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710003547) do
+ActiveRecord::Schema.define(version: 20150710040721) do
 
   create_table "chat_messages", force: true do |t|
     t.integer  "user_id"
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20150710003547) do
     t.integer "bank_account_number"
     t.integer "bank_routing"
     t.string  "paypal_email"
+    t.string  "publishable_key"
+    t.string  "provider"
+    t.string  "uid"
+    t.string  "access_code"
   end
 
   create_table "language_relationships", force: true do |t|
