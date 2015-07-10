@@ -1,0 +1,32 @@
+<%= form_for subscriptions_path, action: :create, method: :post do |form| %>
+  <%= hidden_field_tag 'stripeToken' %>
+  <%= hidden_field_tag 'stripeEmail' %>
+  <%#= hidden_field :charges, :plan_id, value: "course_purchase" %>
+
+  <button id="subscribeButton" class="btn btn-large btn-success">Hire Me</button>
+      <script>
+        var handler = StripeCheckout.configure({
+          key: 'pk_test_mJd0H1gGN2oHHYmgI56Um2oN',
+          image: 'https://dl.dropboxusercontent.com/s/vl246d6q0r0qiek/tweet-speak-checkout-icon.jpg?dl=0',
+          token: function(response) {
+          var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
+          var emailInput = $("<input type=hidden name=stripeEmail />").val(response.email);
+          $("form#coachSubscription").append(tokenInput).append(emailInput).submit();
+              }
+            });
+
+        document.getElementById('subscribeButton').addEventListener('click', function(e) {
+          // Open Checkout with further options
+            handler.open({
+              name: 'Fluentli Coach Subscription',
+              description: 'Subscribe to coach, <%= @user.first_name %>',
+              amount: 10*100,
+            });
+          e.preventDefault();
+        });
+        // Close Checkout on page navigation
+        $(window).on('popstate', function() {
+          handler.close();
+        });
+      </script>
+    <% end %>

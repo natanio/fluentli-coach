@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :testimonials, only: [:new, :create]
   end
 
+  resources :subscriptions
   resources :ratings, only: :update
 
   resources :language_relationships

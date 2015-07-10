@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710001641) do
+ActiveRecord::Schema.define(version: 20150710003547) do
 
   create_table "chat_messages", force: true do |t|
     t.integer  "user_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20150710001641) do
     t.string  "billing_city"
     t.string  "billing_state"
     t.integer "billing_zip"
+    t.string  "stripe_customer_id"
   end
 
   create_table "ratings", force: true do |t|

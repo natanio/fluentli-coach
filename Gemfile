@@ -22,6 +22,7 @@ gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'faye-rails', '~> 2.0'
 gem 'thin'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

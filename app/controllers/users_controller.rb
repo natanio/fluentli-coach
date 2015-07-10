@@ -33,6 +33,9 @@ class UsersController < ApplicationController
     redirect_to users_path, :notice => "User deleted."
   end
 
+  def new_subscription
+  end
+
   private
 
   def secure_params
