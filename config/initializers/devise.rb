@@ -266,6 +266,5 @@ Devise.setup do |config|
     ENV["STRIPE_CONNECT_CLIENT_ID"],
     ENV["STRIPE_API_KEY"],
     :scope => 'read_write',
-    :stripe_landing => 'register',
-    :uri => 'http://localhost:3000/users/auth/stripe_connect'
+    :stripe_landing => 'register'
 end
