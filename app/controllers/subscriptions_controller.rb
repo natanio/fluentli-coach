@@ -5,30 +5,33 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    @coach = Coach.find(params[:subscriptions][:coach_id])
+    Stripe.api_key = "#{@coach.access_code}"
 
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
-    plan = 'weekly_coach_subscription'
 
-
+    # Create a Customer
     customer = Stripe::Customer.create(
       :source => token,
-      :plan => plan,
       :email => current_user.email
     )
 
-    if !customer.default_card.nil?
-      flash[:notice] = "Thanks and welcome! Your payment was successful."
-      current_user.update_attribute(:stripe_customer_id, customer.id)
-      current_user.save
-      redirect_to root_path
+    customer.subscriptions.create(
+      :plan => 'weekly_subscription',
+      :application_fee_percent => 10
+    )
+
+    if !customer.default_source.nil?
+      flash[:notice] = "Thanks for your subscription! Your payment was successful."
+      current_user.learner.update_attribute(:stripe_customer_id, customer.id)
+      current_user.learner.save
+      redirect_to user_path(@coach.user.id)
     end
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to charges_path
-    end
+      redirect_to user_path(@coach.user.id)
   end
 
   def cancel

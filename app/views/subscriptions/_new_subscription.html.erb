@@ -1,12 +1,12 @@
-<%= form_for subscriptions_path, action: :create, method: :post do |form| %>
+<%= form_for @user, :url => subscriptions_path, method: :post, :html => {:id => "coachSubscription"} do |form| %>
   <%= hidden_field_tag 'stripeToken' %>
   <%= hidden_field_tag 'stripeEmail' %>
-  <%#= hidden_field :charges, :plan_id, value: "course_purchase" %>
+  <%= hidden_field :subscriptions, :coach_id, value: @user.coach.id %>
 
   <button id="subscribeButton" class="btn btn-large btn-success">Hire Me</button>
       <script>
         var handler = StripeCheckout.configure({
-          key: 'pk_test_mJd0H1gGN2oHHYmgI56Um2oN',
+          key: 'pk_test_RNcopNSquYAwlwG58WPiA1IW',
           image: 'https://dl.dropboxusercontent.com/s/vl246d6q0r0qiek/tweet-speak-checkout-icon.jpg?dl=0',
           token: function(response) {
           var tokenInput = $("<input type=hidden name=stripeToken />").val(response.id);
