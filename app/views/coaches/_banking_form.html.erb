@@ -3,12 +3,12 @@
   <% @coach = @user.coach %>
 
   <div class="authform">
-    <% if @coach.provider.nil? %>
+    <%# if @coach.provider.nil? %>
       <p>We transfer payments to you via Stripe. To get started, please click the below button:</p>
       <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/fluentlicoach/blue-on-light.png'), user_omniauth_authorize_path(:stripe_connect) %>
-    <% else %>
+    <%# else %>
       <p>Great! You're Stripe account is all set up, so there's nothing to do! Please check your Stripe dashboard for your transfer history.</p>
-    <% end %>
+    <%# end %>
   </div>
 
   <%#= simple_form_for @coach, url: coach_path(@coach), action: :update do |f| %>
