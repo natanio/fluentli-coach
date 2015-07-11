@@ -2,16 +2,23 @@
   <h3>Banking Settings</h3>
   <% @coach = @user.coach %>
 
-  <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/fluentlicoach/blue-on-light.png'), user_omniauth_authorize_path(:stripe_connect) %>
+  <div class="authform">
+    <% if @coach.provider.nil? %>
+      <p>We transfer payments to you via Stripe. To get started, please click the below button:</p>
+      <%= link_to image_tag('https://s3-us-west-2.amazonaws.com/fluentlicoach/blue-on-light.png'), user_omniauth_authorize_path(:stripe_connect) %>
+    <% else %>
+      <p>Great! You're Stripe account is all set up, so there's nothing to do! Please check your Stripe dashboard for your transfer history.</p>
+    <% end %>
+  </div>
 
-  <%= simple_form_for @coach, url: coach_path(@coach), action: :update do |f| %>
-    <div class="autform">
-      <p>At the current time, we only offer PayPal payments.</p>
+  <%#= simple_form_for @coach, url: coach_path(@coach), action: :update do |f| %>
+    <!-- <div class="autform"> -->
+
       <%#= f.input :bank_account_name, label: 'Name on your bank account', placeholder: 'John Smith', class: 'form-control' %>
       <%#= f.input :bank_account_number, class: 'form-control', placeholder: '1234567890', as: :string %>
       <%#= f.input :bank_routing, label: 'The routing number for your bank.', class: 'form-control', placeholder: 'www.youtube.com/123456', as: :string %>
-      <%= f.input :paypal_email, hint: 'This needs to be a valid PayPal email to receive payments.', placeholder: 'valid-paypal-email@gmail.com' ,class: 'form-control' %>
-      <%= f.submit 'Update', class: 'btn btn-primary btn-lg btn-block' %>
-    </div>
-  <% end %>
+      <%#= f.input :paypal_email, hint: 'This needs to be a valid PayPal email to receive payments.', placeholder: 'valid-paypal-email@gmail.com' ,class: 'form-control' %>
+      <%#= f.submit 'Update', class: 'btn btn-primary btn-lg btn-block' %>
+    <!-- </div> -->
+  <%# end %>
 </div>
