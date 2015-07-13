@@ -61,7 +61,12 @@
     <p>$10 / week</p>
   </div>
   <div class="bottom">
-    <%= render 'subscriptions/new_subscription' %>
+    <% unless current_user.user? && !is_subscribed?(@user.coach) %>
+      <%= render 'subscriptions/new_subscription' %>
+    <% else %>
+      <%= link_to "Cancel My Subscription", cancel_subscriptions_path(:user_id => @user.id ), :controller =>
+    :subscriptions, :action => :cancel, :method => :post, :class => "btn btn-danger" %>
+    <% end %>
   </div>
 </div>
 

@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user.user? || @user.admin? then @testimonials = @user.coach.testimonials end
     @spoken_languages = LanguageRelationship.where(user_id: @user.id).where(relationship: 'fluent')
-    @learning_languages = @user.language_relationships.where(relationship: 'learning')
+    if @user.user?
+      @learning_languages = @user.language_relationships.where(relationship: 'learning')
+    end
     authorize @user
   end
 
