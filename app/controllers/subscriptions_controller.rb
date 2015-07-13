@@ -32,8 +32,7 @@ class SubscriptionsController < ApplicationController
     )
 
     if !customer.default_source.nil?
-      flash[:notice] = "Thanks for your subscription! Your payment was successful."
-      redirect_to user_path(@coach.user.id)
+      create_chat_channel
     end
 
     rescue Stripe::CardError => e
@@ -83,5 +82,13 @@ class SubscriptionsController < ApplicationController
   def retrieve_customer
     Stripe.api_key = ENV["STRIPE_API_KEY"]
     @customer = Stripe::Customer.retrieve(current_user.learner.stripe_customer_id)
+  end
+
+  def create_chat_channel
+    @chat = Chat.find_or_create_by(learner_id: current_user.learner.id, coach_id: @coach.id)
+    @chat.update_attribute(:active, true)
+    @chat.save
+    flash[:notice] = "Thanks for your subscription! Your payment was successful."
+    redirect_to chat_path(@chat)
   end
 end
