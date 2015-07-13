@@ -46,14 +46,16 @@ class SubscriptionsController < ApplicationController
     @customer.subscriptions.first.delete
     current_user.save
 
+    change_chat_to_inactive
+
     flash[:alert] = "Your subscription has been canceled. Hope you got the help you were needing!"
     redirect_to user_path(current_user)
   end
 
   def find_customer
     user = User.find(params[:user_id])
-    coach = user.coach
-    Stripe.api_key = coach.access_code
+    @coach = user.coach
+    Stripe.api_key = @coach.access_code
     customers = Stripe::Customer.all
 
     customers.each_with_index do |customer,index|
@@ -90,5 +92,11 @@ class SubscriptionsController < ApplicationController
     @chat.save
     flash[:notice] = "Thanks for your subscription! Your payment was successful."
     redirect_to chat_path(@chat)
+  end
+
+  def change_chat_to_inactive
+    @chat = Chat.find_by learner_id: current_user.learner.id, coach_id: @coach.id
+    @chat.update_attribute(:active, false)
+    @chat.save
   end
 end

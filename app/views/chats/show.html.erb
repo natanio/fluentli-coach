@@ -10,13 +10,17 @@
         </div>
 
         <div id="new_message" class="fixed text-center">
-          <%= form_for([@chat, ChatMessage.new], :html => { class: 'form-inline' }, remote: true) do |f| %>
-            <div class="form-group">
-              <div class="input-group">
-                <%= f.text_area :content, placeholder: "Send a message" %>
+          <% unless !@chat.active %>
+            <%= form_for([@chat, ChatMessage.new], :html => { class: 'form-inline' }, remote: true) do |f| %>
+              <div class="form-group">
+                <div class="input-group">
+                  <%= f.text_area :content, placeholder: "Send a message" %>
+                </div>
+                <%= f.submit "Send", class: "btn btn-sm btn-success" %>
               </div>
-              <%= f.submit "Send", class: "btn btn-sm btn-success" %>
-            </div>
+            <% end %>
+          <% else %>
+            <%= link_to "Rehire #{@chat.coach.user.first_name}", user_path(@chat.coach.user), class: 'btn btn-success' %>
           <% end %>
         </div>
       </div><!-- end column -->
