@@ -1,0 +1,33 @@
+<h1>Listing scheduled_calls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Suggested time 1</th>
+      <th>Suggested time 2</th>
+      <th>Suggested time 3</th>
+      <th>Agreed time</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scheduled_calls.each do |scheduled_call| %>
+      <tr>
+        <td><%= scheduled_call.suggested_time_1 %></td>
+        <td><%= scheduled_call.suggested_time_2 %></td>
+        <td><%= scheduled_call.suggested_time_3 %></td>
+        <td><%= scheduled_call.agreed_time %></td>
+        <td><%= scheduled_call.price %></td>
+        <td><%= link_to 'Show', scheduled_call %></td>
+        <td><%= link_to 'Edit', edit_scheduled_call_path(scheduled_call) %></td>
+        <td><%= link_to 'Destroy', scheduled_call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scheduled call', new_scheduled_call_path %>

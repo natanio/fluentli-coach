@@ -1,0 +1,2 @@
+module ScheduledCallsHelper
+end

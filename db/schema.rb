@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710040721) do
+ActiveRecord::Schema.define(version: 20150713235616) do
 
   create_table "chat_messages", force: true do |t|
     t.integer  "user_id"
@@ -93,6 +93,22 @@ ActiveRecord::Schema.define(version: 20150710040721) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "scheduled_calls", force: true do |t|
+    t.text     "call_details"
+    t.datetime "suggested_time_1"
+    t.datetime "suggested_time_2"
+    t.datetime "suggested_time_3"
+    t.datetime "agreed_time"
+    t.integer  "price"
+    t.integer  "coach_id"
+    t.integer  "learner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scheduled_calls", ["coach_id"], name: "index_scheduled_calls_on_coach_id"
+  add_index "scheduled_calls", ["learner_id"], name: "index_scheduled_calls_on_learner_id"
 
   create_table "testimonials", force: true do |t|
     t.integer  "learner_id"

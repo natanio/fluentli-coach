@@ -17,4 +17,5 @@
 //= require jquery.raty.js
 //= require faye
 //= require chat_messages
+//= require jquery.datetimepicker
 //= require_tree .

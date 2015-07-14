@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Suggested time 1:</strong>
+  <%= @scheduled_call.suggested_time_1 %>
+</p>
+
+<p>
+  <strong>Suggested time 2:</strong>
+  <%= @scheduled_call.suggested_time_2 %>
+</p>
+
+<p>
+  <strong>Suggested time 3:</strong>
+  <%= @scheduled_call.suggested_time_3 %>
+</p>
+
+<p>
+  <strong>Agreed time:</strong>
+  <%= @scheduled_call.agreed_time %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @scheduled_call.price %>
+</p>
+
+<%= link_to 'Edit', edit_scheduled_call_path(@scheduled_call) %> |
+<%= link_to 'Back', scheduled_calls_path %>
