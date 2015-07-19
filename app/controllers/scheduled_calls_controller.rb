@@ -43,6 +43,6 @@ class ScheduledCallsController < ApplicationController
     end
 
     def scheduled_call_params
-      params.require(:scheduled_call).permit(:suggested_time_1, :suggested_time_2, :suggested_time_3, :agreed_time, :price)
+      params.require(:scheduled_call).permit(:call_details, :suggested_time_1, :suggested_time_2, :suggested_time_3, :agreed_time, :price, :coach_id, :learner_id)
     end
 end
