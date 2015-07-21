@@ -1,23 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Suggested time 1:</strong>
-  <%= @scheduled_call.suggested_time_1 %>
+  <%= @scheduled_call.suggested_times.first.time %>
 </p>
 
 <p>
   <strong>Suggested time 2:</strong>
-  <%= @scheduled_call.suggested_time_2 %>
+  <%= @scheduled_call.suggested_times.second.time %>
 </p>
 
 <p>
   <strong>Suggested time 3:</strong>
-  <%= @scheduled_call.suggested_time_3 %>
-</p>
-
-<p>
-  <strong>Agreed time:</strong>
-  <%= @scheduled_call.agreed_time %>
+  <%= @scheduled_call.suggested_times.last.time %>
 </p>
 
 <p>

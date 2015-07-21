@@ -28,7 +28,9 @@ class ScheduledCallsController < ApplicationController
     @suggested_time_2 = DateTime.parse(params[:suggested_time_2])
     @suggested_time_3 = DateTime.parse(params[:suggested_time_3])
 
-    @scheduled_call = ScheduledCall.new(scheduled_call_params)
+    @scheduled_call = @coach.scheduled_calls.new(scheduled_call_params)
+    @scheduled_call.price = @coach.call_rate
+    @scheduled_call.learner_id = current_user.id
 
     @scheduled_call.suggested_times.new(time: @suggested_time_1, agreed: false)
     @scheduled_call.suggested_times.new(time: @suggested_time_2, agreed: false)
