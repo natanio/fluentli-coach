@@ -23,7 +23,17 @@ class ScheduledCallsController < ApplicationController
   end
 
   def create
+    set_coach
+    @suggested_time_1 = DateTime.parse(params[:suggested_time_1])
+    @suggested_time_2 = DateTime.parse(params[:suggested_time_2])
+    @suggested_time_3 = DateTime.parse(params[:suggested_time_3])
+
     @scheduled_call = ScheduledCall.new(scheduled_call_params)
+
+    @scheduled_call.suggested_times.new(time: @suggested_time_1, agreed: false)
+    @scheduled_call.suggested_times.new(time: @suggested_time_2, agreed: false)
+    @scheduled_call.suggested_times.new(time: @suggested_time_3, agreed: false)
+
     flash[:notice] = 'ScheduledCall was successfully created.' if @scheduled_call.save
     respond_with(@scheduled_call)
   end
@@ -44,6 +54,7 @@ class ScheduledCallsController < ApplicationController
     end
 
     def set_coach
+      @user = User.find(params[:user_id])
       @coach = User.find(params[:user_id]).coach
     end
 

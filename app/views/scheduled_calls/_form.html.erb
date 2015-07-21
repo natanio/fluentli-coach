@@ -1,9 +1,12 @@
-<%= simple_form_for(@scheduled_call) do |f| %>
+<%= simple_form_for([@user, @scheduled_call]) do |f| %>
   <%= f.error_notification %>
 
   <div class="authform">
     <div class="form-inputs">
       <%= f.input :call_details, :input_html => {:rows => 6} %>
+      <%= text_field_tag :suggested_time_1, params[:suggested_time_1], id: 'suggested_time_1' %>
+      <%= text_field_tag :suggested_time_2, params[:suggested_time_2], id: 'suggested_time_2' %>
+      <%= text_field_tag :suggested_time_3, params[:suggested_time_3], id: 'suggested_time_3' %>
       <%= f.hidden_field :price %>
     </div>
 
@@ -19,22 +22,22 @@
  -->
 <script type="text/javascript">
   var currentDate = new Date();
-  jQuery('#scheduled_call_suggested_time_1').datetimepicker({
-    format:'m.d.Y H:i',
+  jQuery('#suggested_time_1').datetimepicker({
+    // format:'m.d.Y H:i',
     minDate: 0,
     step: 15,
     inline: true
   });
 
-  jQuery('#scheduled_call_suggested_time_2').datetimepicker({
-    format:'m.d.Y H:i',
+  jQuery('#suggested_time_2').datetimepicker({
+    // format:'m.d.Y H:i',
     minDate: 0,
     step: 15,
     inline: true
   });
 
-  jQuery('#scheduled_call_suggested_time_3').datetimepicker({
-    format:'m.d.Y H:i',
+  jQuery('#suggested_time_3').datetimepicker({
+    // format:'m.d.Y H:i',
     minDate: 0,
     step: 15,
     inline: true
