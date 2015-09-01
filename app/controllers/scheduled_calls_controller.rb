@@ -36,12 +36,12 @@ class ScheduledCallsController < ApplicationController
     @scheduled_call.suggested_times.new(time: @suggested_time_2, agreed: false)
     @scheduled_call.suggested_times.new(time: @suggested_time_3, agreed: false)
 
-    flash[:notice] = 'ScheduledCall was successfully created.' if @scheduled_call.save
+    flash[:notice] = 'Scheduled call was successfully created.' if @scheduled_call.save
     respond_with(@scheduled_call)
   end
 
   def update
-    flash[:notice] = 'ScheduledCall was successfully updated.' if @scheduled_call.update(scheduled_call_params)
+    flash[:notice] = 'Scheduled call was successfully updated.' if @scheduled_call.update(scheduled_call_params)
     respond_with(@scheduled_call)
   end
 

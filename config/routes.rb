@@ -20,4 +20,9 @@ Rails.application.routes.draw do
   resources :chats do
     resources :chat_messages
   end
+  resources :suggested_times do
+    member do
+      get 'accept'
+    end
+  end
 end
