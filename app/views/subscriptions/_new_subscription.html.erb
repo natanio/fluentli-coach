@@ -3,7 +3,7 @@
   <%= hidden_field_tag 'stripeEmail' %>
   <%= hidden_field :subscriptions, :coach_id, value: @user.coach.id %>
 
-  <button id="subscribeButton" class="btn btn-large btn-success btn-block">Hire Me</button>
+  <button id="subscribeButton" class="btn btn-success btn-lg btn-block">Hire Me</button>
       <script>
         var handler = StripeCheckout.configure({
           key: 'pk_test_RNcopNSquYAwlwG58WPiA1IW',

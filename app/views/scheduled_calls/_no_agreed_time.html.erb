@@ -1,0 +1,26 @@
+<p>
+    <strong>Suggested time 1:</strong>
+    <%= @scheduled_call.suggested_times.first.time %>
+    <%= link_to "Accept", {:controller => "suggested_times", :action => "accept", :time_id => @scheduled_call.suggested_times.first.id}, class: 'btn btn-sm btn-primary'  %>
+    <%= link_to 'Change Time', edit_scheduled_call_path(@scheduled_call) %>
+  </p>
+
+  <p>
+    <strong>Suggested time 2:</strong>
+    <%= @scheduled_call.suggested_times.second.time %>
+    <%= link_to "Accept", {:controller => "suggested_times", :action => "accept"}, :id => @scheduled_call.suggested_times.second.id, class: 'btn btn-sm btn-primary'  %>
+  </p>
+
+  <p>
+    <strong>Suggested time 3:</strong>
+    <%= @scheduled_call.suggested_times.last.time %>
+    <%= link_to "Accept", {:controller => "suggested_times", :action => "accept"}, :id => @scheduled_call.suggested_times.last.id, class: 'btn btn-sm btn-primary'  %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= @scheduled_call.price %>
+  </p>
+
+  <%= link_to 'Edit', edit_scheduled_call_path(@scheduled_call) %> |
+  <%= link_to 'Back', scheduled_calls_path %>

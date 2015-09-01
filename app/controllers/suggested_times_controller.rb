@@ -4,6 +4,10 @@ class SuggestedTimesController < ApplicationController
   def create
   end
 
+  def edit
+    @suggested_time = SuggestedTime.find(params[:id])
+  end
+
   def update
     flash[:notice] = 'The suggested time was successfully updated.' if @suggested_time.update(suggested_time_params)
     respond_with(@scheduled_call)

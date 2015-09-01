@@ -75,7 +75,7 @@
     <p>$<%= @user.coach.call_rate %> / 30 minute call</p>
   </div>
   <div class="bottom">
-    <a href="#" class="btn btn-success btn-lg btn-block">Schedule a call</a>
+    <%= link_to 'Schedule a call', new_user_scheduled_call_path(@user), class: 'btn btn-success btn-lg btn-block' %>
   </div>
 </div>
 
